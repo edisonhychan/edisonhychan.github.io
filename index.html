@@ -1,1 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Edison Chan | HKUST ECE</title>
+
+  <meta
+    name="description"
+    content="Personal website of Edison Chan, an Electronic and Computer Engineering undergraduate at HKUST interested in AI, machine learning, robotics, and intelligent systems."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background: #fafafa;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1000px, 90%);
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background: rgba(250, 250, 250, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav-container {
+      width: min(1000px, 90%);
+      margin: auto;
+
+      min-height: 64px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    .hero {
+      min-height: 78vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 80px 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: #4b5563;
+      margin-bottom: 12px;
+    }
+
+    .hero-focus {
+      font-size: 1.05rem;
+      color: #6b7280;
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 11px 18px;
+      border-radius: 8px;
+
+      border: 1px solid #d1d5db;
+
+      transition: 0.2s;
+    }
+
+    .button.primary {
+      background: #111827;
+      color: white;
+      border-color: #111827;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.85;
+    }
+
+    section {
+      padding: 80px 0;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .about {
+      max-width: 750px;
+      font-size: 1.05rem;
+      color: #4b5563;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: white;
+
+      padding: 28px;
+      border-radius: 14px;
+
+      border: 1px solid #e5e7eb;
+
+      transition: 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.06);
+    }
+
+    .project-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .project-card p {
+      color: #6b7280;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+
+      padding: 5px 9px;
+      border-radius: 6px;
+
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 14px;
+
+      background: white;
+
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+    }
+
+    .contact {
+      max-width: 700px;
+    }
+
+    .contact p {
+      color: #6b7280;
+      margin-bottom: 24px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-links a {
+      width: fit-content;
+      border-bottom: 1px solid #9ca3af;
+    }
+
+    footer {
+      padding: 40px 0;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-name">
+        Edison Chan
+      </div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Hero -->
+  <main class="container">
+
+    <div class="hero">
+      <div>
+
+        <h1>
+          Edison Chan
+        </h1>
+
+        <div class="hero-subtitle">
+          Electronic & Computer Engineering Undergraduate @ HKUST
+        </div>
+
+        <div class="hero-focus">
+          Interested in AI, machine learning, robotics,
+          intelligent systems, and bringing algorithms
+          into real-world hardware.
+        </div>
+
+        <div class="buttons">
+
+          <a
+            class="button primary"
+            href="https://github.com/edsionhychan"
+            target="_blank"
+          >
+            GitHub
+          </a>
+
+          <a
+            class="button"
+            href="https://www.linkedin.com/in/恒旭-陳-86a1b438b"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            class="button"
+            href="mailto:hlinbs@connect.ust.hk"
+          >
+            Email Me
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- About -->
+    <section id="about">
+
+      <h2 class="section-title">
+        About Me
+      </h2>
+
+      <div class="about">
+
+        <p>
+          I am an undergraduate student in Electronic and
+          Computer Engineering at the Hong Kong University of
+          Science and Technology (HKUST).
+        </p>
+
+        <br />
+
+        <p>
+          I am particularly interested in applied AI and machine
+          learning, robotics, sensing systems, and edge
+          intelligence. I enjoy building systems that connect
+          software, algorithms, and physical hardware rather than
+          treating them as separate components.
+        </p>
+
+        <br />
+
+        <p>
+          Currently, I am exploring projects involving medical
+          sensing, automated experimentation, robot learning, and
+          real-world AI deployment.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects">
+
+      <h2 class="section-title">
+        Selected Projects
+      </h2>
+
+      <div class="projects">
+
+
+        <!-- Project 1 -->
+        <div class="project-card">
+
+          <h3>
+            Automated Spirometry Calibration Platform
+          </h3>
+
+          <p>
+            Developing an automated experimental platform for
+            studying and correcting volume underestimation in
+            spirometry measurements at high airflow rates.
+            The system combines motion control, sensing,
+            automated data collection, and machine-learning-based
+            calibration.
+          </p>
+
+          <div class="tag-container">
+            <span class="tag">Python</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Sensors</span>
+            <span class="tag">Automation</span>
+          </div>
+
+        </div>
+
+
+        <!-- Project 2 -->
+        <div class="project-card">
+
+          <h3>
+            Robot Learning with LeRobot
+          </h3>
+
+          <p>
+            Working with low-cost robotic arms and vision-based
+            robot learning. My work includes robot setup,
+            camera integration, teleoperation, demonstration
+            collection, policy training, and deployment on
+            physical robotic systems.
+          </p>
+
+          <div class="tag-container">
+            <span class="tag">LeRobot</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Robot Learning</span>
+            <span class="tag">Linux</span>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- Skills / Interests -->
+    <section id="skills">
+
+      <h2 class="section-title">
+        Skills & Interests
+      </h2>
+
+      <div class="skills">
+
+        <div class="skill">Python</div>
+        <div class="skill">C / C++</div>
+        <div class="skill">PyTorch</div>
+        <div class="skill">Machine Learning</div>
+        <div class="skill">Computer Vision</div>
+        <div class="skill">Embedded Systems</div>
+        <div class="skill">Robotics</div>
+        <div class="skill">Git / GitHub</div>
+        <div class="skill">Linux</div>
+        <div class="skill">Edge AI</div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+
+      <h2 class="section-title">
+        Contact
+      </h2>
+
+      <div class="contact">
+
+        <p>
+          Feel free to reach out if you would like to discuss
+          research, engineering projects, robotics, or AI.
+        </p>
+
+        <div class="contact-links">
+
+          <a href="mailto:hlinbs@connect.ust.hk">
+            hlinbs@connect.ust.hk
+          </a>
+
+          <a href="mailto:g2974536648@gmail.com">
+            g2974536648@gmail.com
+          </a>
+
+          <a
+            href="https://github.com/edsionhychan"
+            target="_blank"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/恒旭-陳-86a1b438b"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+      © 2026 Edison Chan.
+      Built with HTML & CSS and hosted on GitHub Pages.
+
+    </footer>
+
+  </main>
+
+</body>
+</html>
